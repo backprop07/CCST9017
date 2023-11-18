@@ -141,7 +141,9 @@ for i in range(2,8):
     if game_over(game):
         break
 print("Game over!")
-if determine_winner(game)==0:
+game = [x for x in game if x != -1]
+game = decode_list(game)
+if determine_winner(game) == 0:
     print("Player 1 wins!")
 else:
     print("Player 2 wins!")
