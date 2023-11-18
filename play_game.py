@@ -4,6 +4,9 @@ from torch.utils.data import Dataset, DataLoader
 import torch.nn as nn
 import torch.nn.functional as F
 import torch
+device = 'cpu'
+if torch.cuda.is_available():
+    device = 'cuda'
 model = "max"
 if model == "min":
     n_layer = 6
@@ -12,7 +15,7 @@ if model == "min":
                             nn.ReLU(),
                         *[nn.Sequential(nn.Linear(n_nodes,n_nodes),nn.ReLU()) for i in range((n_layer-2))],
                         nn.Linear(n_nodes, 15))
-    network.to('cuda')
+    network.to(device)
     network.load_state_dict(torch.load('model_plus_0.64.pth')[0])
     network.eval()
 else:
@@ -46,7 +49,7 @@ else:
                         *[block_change(2**i,2**(i+1)) for i in range(4,12)],
                         *[block_change(2**i,2**(i-1)) for i in range(12,4,-1)],
                         nn.Linear(16, 15))
-    network.to('cuda')
+    network.to(device)
     network.load_state_dict(torch.load('model_plus_max_training.pth')[0])
 from itertools import combinations
 network.eval()
@@ -79,7 +82,7 @@ def game_over(inp: list):
 def make_move(inp: list): # inptut is should be encoded.
     softmax = nn.Softmax(dim=1)
     network.eval()
-    out=softmax(network(torch.tensor([inp],dtype=torch.float32).to('cuda'))).tolist()[0]
+    out=softmax(network(torch.tensor([inp],dtype=torch.float32).to(device))).tolist()[0]
     descending_indices = sorted(list(range(len(out))), key=lambda i: out[i],reverse=True)
     for idx in descending_indices:
         if (idx in inp) or form_tri(decode_list(inp[1::2]),decode(idx)):
@@ -94,7 +97,7 @@ def make_move(inp: list): # inptut is should be encoded.
 def make_move_no_assistance(inp: list):
     softmax = nn.Softmax(dim=1)
     network.eval()
-    out=softmax(network(torch.tensor([inp],dtype=torch.float32).to('cuda'))).tolist()[0]
+    out=softmax(network(torch.tensor([inp],dtype=torch.float32).to(device))).tolist()[0]
     descending_indices = sorted(list(range(len(out))), key=lambda i: out[i],reverse=True)
     for idx in descending_indices:
         if (idx in inp):
