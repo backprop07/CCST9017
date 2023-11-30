@@ -5,7 +5,14 @@ It try to approximate the winning strategy of SIM.
 Using nueral work to solve mathematical problems is a relatively new subject, but the author believe that it will someday become extremely popular.
 
 
-To play with out AI, first use command "pip install -r requirements.txt" to install dependency, then run "python play_game.py" and follow the instruction.
+To play with out AI, first use command 
+```bash
+pip install -r requirements.txt
+to install dependency.
+Then, run
+```bash
+python play_game.py
+And follow the instruction.
 
 ## SIM
 SIM is a game that two players play sequentially to draw lines between six points, the first one whose own lines form a triangluar with three of the six points as the corner will lose the game.  
