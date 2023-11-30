@@ -8,10 +8,12 @@ Using nueral work to solve mathematical problems is a relatively new subject, bu
 To play with out AI, first use command 
 ```bash
 pip install -r requirements.txt
+```
 to install dependency.
 Then, run
 ```bash
 python play_game.py
+```
 And follow the instruction.
 
 ## SIM
