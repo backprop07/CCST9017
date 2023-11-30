@@ -13,3 +13,4 @@ It is known that player two must have a winning strategy, since it is a combinat
 Hence, we try to approximate the winning strategy with deep neural network.  
 This work can be easily transferred to other games whose winning strategies have not yet to be discoverred, since we barely made any assumption about the game.   
 ![IMG_0452](https://github.com/backprop07/CCST9017/assets/145527047/066bcf48-0203-4a6a-ab35-1d45243f46cf)
+<img src="https://github.com/backprop07/CCST9017/assets/145527047/066bcf48-0203-4a6a-ab35-1d45243f46cf" width=50>
