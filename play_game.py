@@ -16,7 +16,7 @@ if model == "min":
                         *[nn.Sequential(nn.Linear(n_nodes,n_nodes),nn.ReLU()) for i in range((n_layer-2))],
                         nn.Linear(n_nodes, 15))
     network.to(device)
-    network.load_state_dict(torch.load('model_plus_0.64.pth')[0])
+    network.load_state_dict(torch.load('Min.pth')[0])
     network.eval()
 else:
     class block_change(nn.Module):
